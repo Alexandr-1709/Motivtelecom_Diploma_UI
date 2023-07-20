@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "motivtelecom-diploma-ui"
+version = "0.1.0"
+description = ""
+authors = ["Aleksandr <nikiforov1709@ya.ru>"]
+readme = "README.md"
+packages = [{include = "motivtelecom_diploma_ui"}]
+
+[tool.poetry.dependencies]
+python = "^3.10.5"
+pytest = "^7.3.2"
+selene = "2.0.0b17"
+allure-pytest = "^2.13.0"
+python-dotenv = "1.0.0"
+pydantic = "^1.10.5"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
