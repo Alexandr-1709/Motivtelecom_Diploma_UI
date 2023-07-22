@@ -1,9 +1,6 @@
 from selene.support.shared import browser
-from selene import have, be
-
-
-from motivtelecom.model.data.data_for_tests import full_name_product
-
+from selene import have, be, command
+from allure import step
 
 class MotivShopPage:
 
@@ -22,12 +19,21 @@ class MotivShopPage:
         browser.element('.vue-search__link:first-child').click()
         return self
 
-    def check_title_product(self):
-        browser.element('h1[class*="title-section_h1"]').\
-            should(have.text(full_name_product.upper()))
-        return self
-
     def confirm_region_on_shop_page(self):
         browser.element('//button[contains(text(),"Да, верно")]').should(be.visible)
         browser.element('//button[contains(text(),"Да, верно")]').click()
         return self
+
+    def added_product_from_hits(self):
+
+        with step('Проскроллить до Хитов'):
+            browser.element('.main-page__hits').perform(command.js.scroll_into_view)
+        hits_element = browser.element('.main-page__hits')
+        hits_element.should(be.visible)
+        items_for_add = hits_element.all('card__footer-basket')
+        with step('Накидать товаров в корзину'):
+            for item in items_for_add:
+                #item.element('.card__footer-basket').should(be.visible)
+                item.click()
+                browser.element('.tingle-modal__button-close').should(be.visible)
+                browser.element('.tingle-modal__button-close').click()
