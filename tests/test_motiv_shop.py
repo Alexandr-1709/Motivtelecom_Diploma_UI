@@ -54,6 +54,10 @@ def test_add_product_to_cart():
     with allure.step('Подтвердить регион'):
         app.motiv_shop_page.confirm_region_on_shop_page()
 
-    #WHEN
+    # WHEN
     with allure.step('Добавить товары в корзину'):
         app.motiv_shop_page.added_product_from_hits()
+
+    #THEN
+    with allure.step('Проверка количества товаров в корзине'):
+        app.motiv_shop_page.check_quantity_product_to_cart()

@@ -5,7 +5,7 @@ from selenium import webdriver
 
 from selenium.webdriver.chrome.options import Options
 
-#
+
 # @pytest.fixture(scope='function', autouse=True)
 # def driver_management():
 #     # browser.config.driver = webdriver.Remote(command_executor=
@@ -28,20 +28,20 @@ from selenium.webdriver.chrome.options import Options
 
 @pytest.fixture(scope='function', autouse=True)
 def driver_managment_remote():
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
-        "selenoid:options": {"enableVNC": True, "enableVideo": True},
-    }
-    options.capabilities.update(selenoid_capabilities)
-    driver = webdriver.Remote(
-        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
-        keep_alive=True,
-        options=options,
-    )
+    # options = Options()
+    # selenoid_capabilities = {
+    #     "browserName": "chrome",
+    #     "browserVersion": "100.0",
+    #     "selenoid:options": {"enableVNC": True, "enableVideo": True},
+    # }
+    # options.capabilities.update(selenoid_capabilities)
+    # driver = webdriver.Remote(
+    #     command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
+    #     keep_alive=True,
+    #     options=options,
+    # )
 
-    browser.config.driver = driver
+    #browser.config.driver = webdriver   # driver --> webdriver
     browser.config.hold_driver_at_exit = False
     browser.config.base_url = 'https://motivtelecom.ru/'
     browser.config.window_width = 1920
