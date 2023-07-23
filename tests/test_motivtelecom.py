@@ -1,16 +1,18 @@
 import allure
 from motivtelecom.model import app
 from motivtelecom.model.helper.parametrize import authorization_with_params
+from tests.conftest import home_page_only
 
 
-
+@home_page_only
 def test_confirm_region():
     with allure.step('Подтверждение региона'):
         app.main_page.open_page()
         app.main_page.confirm_region()
 
 
-def test_transition_to_login_page():
+@home_page_only
+def test_transition_to_login_page(driver_management_remote):
     with allure.step('Открытие в браузере главной страницы'):
         app.main_page.open_page()
 
@@ -21,8 +23,9 @@ def test_transition_to_login_page():
         app.login_page.check_transition_to_login_page()
 
 
+@home_page_only
 @authorization_with_params
-def test_authorization(phone_number, password, error_text):
+def test_authorization(driver_management_remote, phone_number, password, error_text):
     # GIVEN
     with allure.step('Переход на страницу авторизации'):
         app.main_page.open_page()

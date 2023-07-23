@@ -8,6 +8,7 @@ from motivtelecom.model.data.data_for_tests import unregistered_phone_number, \
     error_phone_text, \
     smartphones, \
     laptops
+from tests.conftest import driver_management_remote
 
 authorization_with_params = \
     pytest.mark.parametrize('phone_number, password, error_text',
@@ -24,3 +25,5 @@ categorys_params = pytest.mark.parametrize('category',
                                            [smartphones, laptops],
                                            ids=['smartphones',
                                                 'laptops'])
+
+

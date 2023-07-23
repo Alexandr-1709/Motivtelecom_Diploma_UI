@@ -7,4 +7,6 @@ error_password_text = 'Неверное имя пользователя или �
 error_phone_text = 'Номер не обслуживается в МОТИВ'
 smartphones = 'Смартфоны'
 laptops = 'Ноутбуки и планшеты'
+base_url = 'https://motivtelecom.ru/'
+shop_url = 'https://shop.motivtelecom.ru/'
 
