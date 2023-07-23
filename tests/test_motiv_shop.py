@@ -1,8 +1,7 @@
 import allure
 from motivtelecom.model import app
 from motivtelecom.model.data.data_for_tests import full_name_product
-
-category = "Смартфон"
+from motivtelecom.model.helper.parametrize import categorys_params
 
 
 @allure.title('Проверка поиска по полному названию товара')
@@ -26,8 +25,9 @@ def test_full_name_search():
         app.product_page.check_title_product()
 
 
+@categorys_params
 @allure.title('Проверка поиска товара по категориям')
-def test_search_product_from_category():
+def test_search_product_from_category(category):
     # GIVEN
     with allure.step('Открыть главную страницу'):
         app.main_page.open_page()

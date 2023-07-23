@@ -5,5 +5,6 @@ wrong_password = 'QA.GURU_test1'
 valid_password = 'QA.GURU_test2'
 error_password_text = 'Неверное имя пользователя или пароль'
 error_phone_text = 'Номер не обслуживается в МОТИВ'
-
+smartphones = 'Смартфоны'
+laptops = 'Ноутбуки и планшеты'
 
