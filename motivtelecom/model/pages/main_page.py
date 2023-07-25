@@ -1,6 +1,5 @@
 from enum import Enum
 from selene.support.shared import browser
-from selene import have
 
 
 
@@ -24,3 +23,8 @@ class MainPage:
     # def check_region_name(self):
     #     text = browser.element('.b-header__choose-region-text')
     #     text.at
+
+    def open_shop_page(self):
+        browser.element('.b-sections-menu__link-text_double').click()
+        browser.switch_to_next_tab()
+        return self

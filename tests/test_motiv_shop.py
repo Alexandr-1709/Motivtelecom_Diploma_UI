@@ -3,16 +3,20 @@ from motivtelecom.model import app
 from motivtelecom.model.data.data_for_tests import full_name_product
 from motivtelecom.model.helper.parametrize import categorys_params
 from tests.conftest import shop_only
+from allure_commons.types import Severity
 
 
 @shop_only
+@allure.tag("WEB UI")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Nikiforov")
 @allure.title('Проверка поиска по полному названию товара')
 def test_full_name_search():
     # GIVEN
     with allure.step('Открыть главную страницу'):
         app.main_page.open_page()
     # with allure.step('Перейти на страницу магазина'):
-    #     app.motiv_shop_page.open_shop_page()
+    #     app.main_page.open_shop_page()
     with allure.step('Подтвердить регион'):
         app.motiv_shop_page.confirm_region_on_shop_page()
 
@@ -29,13 +33,16 @@ def test_full_name_search():
 
 @shop_only
 @categorys_params
+@allure.tag("WEB UI")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Nikiforov")
 @allure.title('Проверка поиска товара по категориям')
 def test_search_product_from_category(category):
     # GIVEN
     with allure.step('Открыть главную страницу'):
         app.main_page.open_page()
     # with allure.step('Перейти на страницу магазина'):
-    #     app.motiv_shop_page.open_shop_page()
+    #     app.main_page.open_shop_page()
     with allure.step('Подтвердить регион'):
         app.motiv_shop_page.confirm_region_on_shop_page()
 
@@ -48,13 +55,16 @@ def test_search_product_from_category(category):
 
 
 @shop_only
+@allure.tag("WEB UI")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Nikiforov")
 @allure.title('Добавление товаров в корзину из "Хиты продаж"')
 def test_add_product_to_cart():
     # GIVEN
     with allure.step('Открыть главную страницу'):
         app.main_page.open_page()
     # with allure.step('Перейти на страницу магазина'):
-    #     app.motiv_shop_page.open_shop_page()
+    #     app.main_page.open_shop_page()
     with allure.step('Подтвердить регион'):
         app.motiv_shop_page.confirm_region_on_shop_page()
 

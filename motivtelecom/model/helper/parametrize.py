@@ -1,18 +1,19 @@
+import os
+
 import pytest as pytest
 
 from motivtelecom.model.data.data_for_tests import unregistered_phone_number, \
-    valid_phone_number, \
     wrong_password, \
     valid_password, \
     error_password_text, \
     error_phone_text, \
     smartphones, \
     laptops
-from tests.conftest import driver_management_remote
+
 
 authorization_with_params = \
     pytest.mark.parametrize('phone_number, password, error_text',
-                            [(valid_phone_number,
+                            [(os.getenv('user_phone'),
                               wrong_password,
                               error_password_text),
                              (unregistered_phone_number,

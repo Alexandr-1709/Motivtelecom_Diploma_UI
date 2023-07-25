@@ -1,5 +1,5 @@
 from selene.support.shared import browser
-from selene import have, be, command
+from selene import be, command
 from allure import step
 
 
@@ -9,10 +9,39 @@ class MotivShopPage:
         self.count_product = None
         self.count_before_add = None
 
-    def open_shop_page(self):
-        browser.element('.b-sections-menu__link-text_double').click()
-        browser.switch_to_next_tab()
-        return self
+    def open_autorization_page(self):
+        with step('Открыть страницу авторизации'):
+            browser.element('.header-main__services-item .js-modal').click()
+            return self
+
+    def go_to_open_autorization_page(self):
+        with step('Перейти на страницу авторизации'):
+            browser.element('.tingle-modal-box .authorization__link_password'). \
+                should(be.visible)
+            browser.element('.tingle-modal-box .authorization__link_password'). \
+                click()
+            return self
+
+    def input_phone(self, phone_number):
+        with step('Ввести номер телефона'):
+            collection = browser.all('#personal-phone-js')
+            collection.second.click()
+            collection.second.type(phone_number)
+            return self
+
+    def input_password(self, password):
+        with step('Ввести пароль'):
+            element = browser.element('.tingle-modal--visible .authorization__wrapper')
+            element.element('#fp-password-js').should(be.visible)
+            element.element('#fp-password-js').click()
+            element.element('#fp-password-js').type(password)
+            return self
+
+    def click_submit_auth(self):
+        with step('Подтвердить авторизацию - кнока "Войти"'):
+            element = browser.element('.tingle-modal--visible .authorization_password')
+            element.element('.form-phone-password__submit-button').click()
+            return self
 
     def input_search_request(self, name):
         browser.element('.vue-search__value').should(be.visible)
@@ -44,14 +73,17 @@ class MotivShopPage:
                 browser.element('.tingle-modal__button-close').should(be.visible)
                 browser.element('.tingle-modal__button-close').click()
 
-
     def count_product_to_cart(self):
-        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]').\
+        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
             locate().text
         return int(''.join(filter(str.isdigit, quantity)))
 
     def check_quantity_product_to_cart(self):
-        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]').\
+        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
             locate().text
         count_after_add = int(''.join(filter(str.isdigit, quantity)))
         assert (count_after_add - self.count_before_add) == self.count_product
+
+    def open_cart(self):
+        with step('Открыть страницу с выбранным товаром'):
+            browser.element('.header-links .ico-cart').click()

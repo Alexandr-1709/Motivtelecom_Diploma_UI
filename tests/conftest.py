@@ -1,32 +1,17 @@
+import os
+import pickle
+import time
+from allure import step
 import pytest
 from selene import browser
 
+from motivtelecom.model import app
 from motivtelecom.model.data import data_for_tests
 from motivtelecom.utils import attach
 from selenium import webdriver
 
 from selenium.webdriver.chrome.options import Options
 
-
-# @pytest.fixture(scope='function', autouse=True)
-# def driver_management():
-#     # browser.config.driver = webdriver.Remote(command_executor=
-#     #                                          config.settings.remote_url,
-#     #                                          options=config.settings.driver_options
-#     #                                          )
-#     browser.config.window_width = config.settings.window_width
-#     browser.config.window_height = config.settings.window_height
-#     browser.config.base_url = config.settings.base_url
-#     #browser.config.hold_driver_at_exit = config.settings.hold_driver_at_exit
-#     browser.config.timeout = config.settings.timeout
-#
-#     yield
-#
-#     attach.add_html(browser)
-#     attach.add_screenshot(browser)
-#     attach.add_logs(browser)
-#     attach.add_video(browser)
-#     browser.quit()
 
 @pytest.fixture(scope='function',
                 params=[(data_for_tests.base_url, data_for_tests.shop_url)],
@@ -51,7 +36,7 @@ def driver_management_remote(request):
     browser.config.shop_url = request.param
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-    browser.config.timeout = 9.0
+    browser.config.timeout = 5.0
 
     yield browser
     attach.add_html(browser)
@@ -70,3 +55,31 @@ home_page_only = pytest.mark.parametrize('driver_management_remote',
                                          [data_for_tests.base_url],
                                          indirect=True
                                          )
+
+
+@pytest.fixture()
+def record_auth_cookies(driver_management_remote):
+    phone = os.getenv('user_phone')
+    password = os.getenv('user_password')
+
+    app.main_page.open_page()
+
+    app.motiv_shop_page. \
+        open_autorization_page(). \
+        go_to_open_autorization_page(). \
+        input_phone(phone). \
+        input_password(password). \
+        click_submit_auth()
+
+    pickle.dump(browser.driver.get_cookies(), open('authorization_cookies', 'wb'))
+
+
+@pytest.fixture()
+def auth_through_cookies(record_auth_cookies):
+    for cookie in pickle.load(open('authorization_cookies', 'rb')):
+        browser.driver.add_cookie(cookie)
+    time.sleep(5.0)
+    browser.driver.refresh()
+    with step('Проверить bvkjfv;'):
+        browser.element('.user-tooltip__link').click()
+    time.sleep(10.0)
