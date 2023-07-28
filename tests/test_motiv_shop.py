@@ -6,6 +6,7 @@ from tests.conftest import shop_only
 from allure_commons.types import Severity
 
 
+
 @shop_only
 @allure.tag("WEB UI")
 @allure.severity(Severity.NORMAL)
@@ -59,7 +60,7 @@ def test_search_product_from_category(category):
 @allure.severity(Severity.NORMAL)
 @allure.label("owner", "Nikiforov")
 @allure.title('Добавление товаров в корзину из "Хиты продаж"')
-def test_add_product_to_cart():
+def test_add_product_to_cart(auth_through_cookies):
     # GIVEN
     with allure.step('Открыть главную страницу'):
         app.main_page.open_page()
@@ -75,3 +76,32 @@ def test_add_product_to_cart():
     # THEN
     with allure.step('Проверка количества товаров в корзине'):
         app.motiv_shop_page.check_quantity_product_to_cart()
+
+
+@shop_only
+@allure.tag("WEB UI")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Nikiforov")
+@allure.title('Удаление всех товаров из корзины')
+def test_remove_product_to_cart(auth_through_cookies):
+    # GIVEN
+    with allure.step('Открыть главную страницу'):
+        app.main_page.open_page()
+    # with allure.step('Перейти на страницу магазина'):
+    #     app.main_page.open_shop_page()
+    with allure.step('Подтвердить регион'):
+        app.motiv_shop_page.confirm_region_on_shop_page()
+
+    # WHEN
+    with allure.step('Перейти в корзину'):
+        app.motiv_shop_page.open_cart()
+    with allure.step('Удалить все товары'):
+        app.cart_page.remove_all_product_from_cart()
+    with allure.step('Выйти из корзины на главную страницу'):
+        app.cart_page.exit_from_cart()
+
+    # THEN
+    with allure.step('Проверка количества товаров в корзине'):
+        app.motiv_shop_page.check_empty_cart()
+
+

@@ -1,5 +1,5 @@
 from selene.support.shared import browser
-from selene import be, command
+from selene import be, command, have
 from allure import step
 
 
@@ -64,7 +64,9 @@ class MotivShopPage:
         browser.element('// a[ @ href = "/catalog/hits/"][1]').click()
 
         self.count_before_add = self.count_product_to_cart()
-        items_for_add = browser.all('.catalog-result .card__footer-basket')
+        collection = browser.all('.catalog-result .card__footer-basket')
+        items_for_add = collection.by(have.exact_text('В корзину'))
+
         self.count_product = len(items_for_add)
 
         with step('Накидать товаров в корзину'):
@@ -72,6 +74,7 @@ class MotivShopPage:
                 item.click()
                 browser.element('.tingle-modal__button-close').should(be.visible)
                 browser.element('.tingle-modal__button-close').click()
+
 
     def count_product_to_cart(self):
         quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
@@ -82,8 +85,17 @@ class MotivShopPage:
         quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
             locate().text
         count_after_add = int(''.join(filter(str.isdigit, quantity)))
+        browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]').\
+            perform(command.js.scroll_into_view)
         assert (count_after_add - self.count_before_add) == self.count_product
 
     def open_cart(self):
         with step('Открыть страницу с выбранным товаром'):
-            browser.element('.header-links .ico-cart').click()
+            browser.element('.js-info-basket').click()
+
+    def check_empty_cart(self):
+        with step('Проверить, что корзина пустая'):
+            quantity = browser.element('.js-info-basket .products-button__counter').locate().text
+            count = int(''.join(filter(str.isdigit, quantity)))
+            # browser.element('.app-popup__wrapper .products-viewed__empty-text').should(have.text('Корзина пуста'))
+            assert count == 0
