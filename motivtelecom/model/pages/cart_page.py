@@ -21,5 +21,6 @@ class CartPage:
 
     def exit_from_cart(self):
         with step('Выйти из корзины'):
+            browser.element('#logo-text').should(be.clickable)
             browser.element('#logo-text').click()
 
