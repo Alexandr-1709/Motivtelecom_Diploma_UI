@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "Motivtelecom_Diploma_UI",
+    "environment": "QAGURU",
+    "comment": "@Aleksandr_Nikiforoff",
+    "reportLink": "${BUILD_URL}",
+    "language": "ru",
+    "messenger": "telegram",
+    "allureFolder": "allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6235390057:AAFTQ22I0fKa4qbu1UzcNrND71U40synElk",
+    "chat": "-1001970618243",
+    "replyTo": ""
+  }
+}
