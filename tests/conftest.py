@@ -3,7 +3,7 @@ import pickle
 import time
 from allure import step
 import pytest
-#from selene import browser
+# from selene import browser
 from selene.support.shared import browser
 from dotenv import load_dotenv
 
@@ -14,7 +14,8 @@ from selenium import webdriver
 
 from selenium.webdriver.chrome.options import Options
 
-@pytest.fixture(scope='function', autouse=True)
+
+@pytest.fixture(scope='session', autouse=True)
 def load_env():
     load_dotenv()
 

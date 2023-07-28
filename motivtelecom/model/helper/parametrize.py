@@ -8,12 +8,11 @@ from motivtelecom.model.data.data_for_tests import unregistered_phone_number, \
     error_password_text, \
     error_phone_text, \
     smartphones, \
-    laptops
-
+    laptops, valid_phone_number
 
 authorization_with_params = \
     pytest.mark.parametrize('phone_number, password, error_text',
-                            [(os.getenv('user_phone'),
+                            [(valid_phone_number,
                               wrong_password,
                               error_password_text),
                              (unregistered_phone_number,
