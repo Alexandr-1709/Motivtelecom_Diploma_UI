@@ -14,7 +14,7 @@ from selenium import webdriver
 
 from selenium.webdriver.chrome.options import Options
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def load_env():
     load_dotenv()
 
