@@ -3,7 +3,8 @@ import pickle
 import time
 from allure import step
 import pytest
-from selene import browser
+#from selene import browser
+from selene.support.shared import browser
 
 from motivtelecom.model import app
 from motivtelecom.model.data import data_for_tests
