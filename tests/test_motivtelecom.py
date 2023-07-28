@@ -31,6 +31,7 @@ def test_transition_to_login_page(driver_management_remote):
 @allure.tag("WEB UI")
 @allure.severity(Severity.CRITICAL)
 @allure.label("owner", "Nikiforov")
+@allure.title('Авторизация пользователя по номеру телефона')
 def test_authorization(driver_management_remote, phone_number, password, error_text):
     # GIVEN
     with allure.step('Переход на страницу авторизации'):

@@ -5,6 +5,7 @@ from allure import step
 import pytest
 #from selene import browser
 from selene.support.shared import browser
+from dotenv import load_dotenv
 
 from motivtelecom.model import app
 from motivtelecom.model.data import data_for_tests
@@ -12,6 +13,10 @@ from motivtelecom.utils import attach
 from selenium import webdriver
 
 from selenium.webdriver.chrome.options import Options
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    load_dotenv()
 
 
 @pytest.fixture(scope='function',
