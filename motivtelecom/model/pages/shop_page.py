@@ -5,9 +5,9 @@ from allure import step
 
 class MotivShopPage:
 
-    def __init__(self):
-        self.count_product = None
-        self.count_before_add = None
+    # def __init__(self):
+    #     self.count_product = None
+    #     self.count_before_add = None
 
     def open_autorization_page(self):
         with step('Открыть страницу авторизации'):
