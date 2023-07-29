@@ -91,6 +91,8 @@ def test_remove_product_to_cart(auth_through_cookies):
     #     app.main_page.open_shop_page()
     with allure.step('Подтвердить регион'):
         app.motiv_shop_page.confirm_region_on_shop_page()
+    with allure.step('Добавить товары в корзину'):
+        app.motiv_shop_page.added_product_from_hits()
 
     # WHEN
     with allure.step('Перейти в корзину'):
