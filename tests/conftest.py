@@ -64,7 +64,7 @@ home_page_only = pytest.mark.parametrize('driver_management_remote',
 
 
 @pytest.fixture()
-def record_auth_cookies(driver_management_remote,load_env):
+def record_auth_cookies(load_env, driver_management_remote):
     phone = os.getenv('user_phone')
     password = os.getenv('user_password')
 

@@ -26,6 +26,7 @@ class MotivShopPage:
     def input_phone(self, phone_number):
         with step('Ввести номер телефона'):
             collection = browser.all('#personal-phone-js')
+            collection.second.should(be.visible)
             collection.second.click()
             collection.second.type(phone_number)
             return self
