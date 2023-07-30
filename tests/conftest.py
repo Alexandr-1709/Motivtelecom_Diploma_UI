@@ -22,7 +22,7 @@ def load_env():
 @pytest.fixture(scope='function',
                 params=[(data_for_tests.base_url, data_for_tests.shop_url)],
                 autouse=True)
-def driver_management_remote(load_env, request):
+def driver_management_remote(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
