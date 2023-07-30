@@ -22,7 +22,7 @@ def load_env():
 @pytest.fixture(scope='function',
                 params=[(data_for_tests.base_url, data_for_tests.shop_url)],
                 autouse=True)
-def driver_management_remote(load_env, request):
+def driver_management_remote(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -64,7 +64,7 @@ home_page_only = pytest.mark.parametrize('driver_management_remote',
 
 
 @pytest.fixture()
-def record_auth_cookies(driver_management_remote):
+def record_auth_cookies(load_env, driver_management_remote):
     phone = os.getenv('user_phone')
     password = os.getenv('user_password')
 
