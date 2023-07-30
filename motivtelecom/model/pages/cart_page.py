@@ -16,9 +16,7 @@ class CartPage:
                 browser.element('.card-basket__button').click()
                 browser.wait_until(browser.element('.card-basket__button').should(be.clickable))
 
-        browser.element('.app-basket-empty').\
-            should(have.text('Ваша корзина пуста'))
-        return self
+
 
     def exit_from_cart(self):
         with step('Выйти из корзины'):
@@ -26,3 +24,8 @@ class CartPage:
             browser.element('#logo-text').click()
             return self
 
+    def check_empty_cart(self):
+        with step('Проверить, что корзина пустая'):
+            browser.element('.app-basket-empty'). \
+                should(have.text('Ваша корзина пуста'))
+            return self

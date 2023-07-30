@@ -5,9 +5,10 @@ from allure import step
 
 class MotivShopPage:
 
-    # def __init__(self):
-    #     self.count_product = None
-    #     self.count_before_add = None
+    def __init__(self):
+        self.count_product = 0
+        self.count_before_add = 0
+
 
     def open_autorization_page(self):
         with step('Открыть страницу авторизации'):
@@ -77,25 +78,21 @@ class MotivShopPage:
 
 
     def count_product_to_cart(self):
-        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
+        quantity = browser.element('.js-info-basket .products-button__counter'). \
             locate().text
         return int(''.join(filter(str.isdigit, quantity)))
 
     def check_quantity_product_to_cart(self):
-        quantity = browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]'). \
+        quantity = browser.element('.js-info-basket .products-button__counter'). \
             locate().text
         count_after_add = int(''.join(filter(str.isdigit, quantity)))
-        browser.element('//a[@href="/cart/" and @class="products-viewed__link app-popup-btn"]').\
+        browser.element('.js-info-basket .products-button__counter').\
             perform(command.js.scroll_into_view)
+        print(count_after_add, self.count_before_add, self.count_product)
         assert (count_after_add - self.count_before_add) == self.count_product
 
     def open_cart(self):
         with step('Открыть страницу с выбранным товаром'):
             browser.element('.js-info-basket').click()
 
-    def check_empty_cart(self):
-        with step('Проверить, что корзина пустая'):
-            quantity = browser.element('.js-info-basket .products-button__counter').locate().text
-            count = int(''.join(filter(str.isdigit, quantity)))
-            # browser.element('.app-popup__wrapper .products-viewed__empty-text').should(have.text('Корзина пуста'))
-            assert count == 0
+

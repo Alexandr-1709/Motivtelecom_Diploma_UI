@@ -3,7 +3,6 @@ import pickle
 import time
 from allure import step
 import pytest
-# from selene import browser
 from selene.support.shared import browser
 from dotenv import load_dotenv
 

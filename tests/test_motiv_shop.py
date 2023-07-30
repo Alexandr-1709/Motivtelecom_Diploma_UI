@@ -99,11 +99,9 @@ def test_remove_product_to_cart(auth_through_cookies):
         app.motiv_shop_page.open_cart()
     with allure.step('Удалить все товары'):
         app.cart_page.remove_all_product_from_cart()
-    with allure.step('Выйти из корзины на главную страницу'):
-        app.cart_page.exit_from_cart()
 
     # THEN
     with allure.step('Проверка количества товаров в корзине'):
-        app.motiv_shop_page.check_empty_cart()
+        app.cart_page.check_empty_cart()
 
 
