@@ -1,3 +1,5 @@
+import time
+
 from selene.support.shared import browser
 from selene import be, command, have
 from allure import step
@@ -29,6 +31,7 @@ class MotivShopPage:
             collection.second.should(be.visible)
             collection.second.click()
             collection.second.type(phone_number)
+            time.sleep(2.0)
             return self
 
     def input_password(self, password):
@@ -37,6 +40,7 @@ class MotivShopPage:
             element.element('#fp-password-js').should(be.visible)
             element.element('#fp-password-js').click()
             element.element('#fp-password-js').type(password)
+            time.sleep(2.0)
             return self
 
     def click_submit_auth(self):
