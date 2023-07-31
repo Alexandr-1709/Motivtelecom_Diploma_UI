@@ -88,11 +88,13 @@ class MotivShopPage:
         return int(''.join(filter(str.isdigit, quantity)))
 
     def check_quantity_product_to_cart(self):
+        browser.element('.js-info-basket .products-button__counter'). \
+            perform(command.js.scroll_into_view)
+        browser.element('.js-info-basket .products-button__counter').should(be.visible)
         quantity = browser.element('.js-info-basket .products-button__counter'). \
             locate().text
         count_after_add = int(''.join(filter(str.isdigit, quantity)))
-        browser.element('.js-info-basket .products-button__counter').\
-            perform(command.js.scroll_into_view)
+
         print(count_after_add, self.count_before_add, self.count_product)
         assert (count_after_add - self.count_before_add) == self.count_product
 
