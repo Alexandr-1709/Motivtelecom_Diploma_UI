@@ -41,16 +41,16 @@
 ### <img width="5%" title="Allure Report" src="images/logo/allure_report.png"> Allure report
 ### [Report](https://jenkins.autotests.cloud/job/Motivtelecom/45/allure/)
 ##### После прохождения тестов, результаты можно посмотреть в Allure отчете, где так же содержится ссылка на Jenkins
-![This is an image](images/screenshots/Allure Report Over.jpg)
+![This is an image](images/screenshots/Allure_Report_Over.jpg)
 
 ##### Во вкладке Graphs можно посмотреть графики о прохождении тестов, по их приоритезации, по времени прохождения и др.
-![This is an image](images/screenshots/Allure Report Graphs.jpg)
+![This is an image](images/screenshots/Allure_Report_Graphs.jpg)
 
 ##### Во вкладке Suites находятся собранные тест кейсы, у которых описаны шаги и приложены логи, скриншот и видео о прохождении теста
-![This is an image](images/screenshots/Allure Report Suites.jpg)
+![This is an image](images/screenshots/Allure_Report_Suites.jpg)
 
 ##### Видео прохождение теста
-![This is an image](images/screenshots/Test Shop Cart.mp4)
+![This is an image](images/screenshots/Test_Shop_Cart.mp4)
 
 <!-- Allure TestOps -->
 
@@ -59,7 +59,7 @@
 ### [Dashboard](https://allure.autotests.cloud/project/3583/dashboards)
 
 ##### Так же вся отчетность сохраняется в Allure TestOps, где строятся аналогичные графики и диаграммы.
-![This is an image](images/screenshots/Allure TestOps Graphs.jpg)
+![This is an image](images/screenshots/Allure_TestOps_Graphs.jpg)
 
 #### Во вкладке со сьютами, мы можем:
 - Управлять всеми тест-кейсами или с каждым отдельно
@@ -67,7 +67,7 @@
 - Настроить интеграцию с Jira
 - Добавлять ручные тесты и т.д
 
-![This is an image](images/screenshots/Allure TestOps test cases.jpg)
+![This is an image](images/screenshots/Allure_TestOps_test_cases.jpg)
 
 
 <!-- Jira -->
@@ -75,7 +75,7 @@
 ### <img width="5%" title="Jira" src="images/logo/jira.png"> Интеграция с Jira
 ##### Настроив через Allure TestOps интеграцию с Jira, в тикет можно передать результат прохождение тестов и список тест-кейсов из Allure
 
-![This is an image](images/screenshots/Jira integrationns.jpg)
+![This is an image](images/screenshots/Jira_integrationns.jpg)
 
 
 <!-- Telegram -->
