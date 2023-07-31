@@ -83,4 +83,4 @@
 ### <img width="5%" title="Telegram" src="images/logo/tg.png"> Интеграция с Telegram
 ##### После прохождения тестов, в Telegram bot приходит сообщение с графиком и небольшой информацией о тестах.
 
-![This is an image](images/screenshot/tg_bot.png)
+![This is an image](images/screenshot/telegram_report.jpg)
