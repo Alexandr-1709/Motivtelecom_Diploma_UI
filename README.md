@@ -81,6 +81,6 @@
 <!-- Telegram -->
 
 ### <img width="5%" title="Telegram" src="images/logo/tg.png"> Интеграция с Telegram
-##### После прохождения тестов, в Telegram bot приходит сообщение с графиком и небольшой информацией о тестах.
+##### Результат прохождения тестов отправляется в телеграм, со ссылкой на Allure отчет.
 
 ![This is an image](images/screenshots/telegram_report.jpg)
