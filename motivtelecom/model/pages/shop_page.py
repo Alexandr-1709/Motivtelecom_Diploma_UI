@@ -80,6 +80,7 @@ class MotivShopPage:
                 item.click()
                 browser.element('.tingle-modal__button-close').should(be.visible)
                 browser.element('.tingle-modal__button-close').click()
+            browser.driver.refresh()
 
 
     def count_product_to_cart(self):
