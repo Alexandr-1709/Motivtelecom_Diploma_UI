@@ -50,7 +50,7 @@
 ![This is an image](images/screenshots/Allure_Report_Suites.jpg)
 
 ##### Видео прохождение теста
-![This is an image](images/screenshots/Test_Shop_Cart.mp4)
+![This is an image](images/screenshots/Test_Shop_Cart.gif)
 
 <!-- Allure TestOps -->
 
