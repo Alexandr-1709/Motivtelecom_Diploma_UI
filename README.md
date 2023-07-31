@@ -33,23 +33,23 @@
 
 ### [Запуск проекта в Jenkins](https://jenkins.autotests.cloud/job/Motivtelecom/)
 
-##### Для запуска тестов кликнуть "Собрать сейчас" начнется сборка тестов и их прохождение, через виртуальную машину в Selenoid.
+##### Для запуска тестов кликнуть "Собрать сейчас", начнется сборка тестов и их прохождение, через виртуальную машину в Selenoid.
 ![This is an image](images/screenshots/Jenkins.jpg)
 
 <!-- Allure report -->
 
 ### <img width="5%" title="Allure Report" src="images/logo/allure_report.png"> Allure report
 ### [Report](https://jenkins.autotests.cloud/job/Motivtelecom/45/allure/)
-##### После прохождения тестов, результаты можно посмотреть в Allure отчете, где так же содержится ссылка на Jenkins
+##### После прохождения тестов, результаты можно посмотреть в Allure отчёте, где так же содержится ссылка на Jenkins
 ![This is an image](images/screenshots/Allure_Report_Over.jpg)
 
-##### Во вкладке Graphs можно посмотреть графики о прохождении тестов, по их приоритезации, по времени прохождения и др.
+##### Во вкладке Graphs можно посмотреть графики прохождения тестов,отсортированные по приоритезации, по времени прохождения и др.
 ![This is an image](images/screenshots/Allure_Report_Graphs.jpg)
 
-##### Во вкладке Suites находятся собранные тест кейсы, у которых описаны шаги и приложены логи, скриншот и видео о прохождении теста
+##### Во вкладке Suites находятся собранные тест-кейсы, у которых описаны шаги и приложены логи, скриншот и видео о прохождении теста
 ![This is an image](images/screenshots/Allure_Report_Suites.jpg)
 
-##### Видео прохождение теста
+##### Видео прохождения теста
 ![This is an image](images/screenshots/Test_Shop_Cart.gif)
 
 <!-- Allure TestOps -->
@@ -73,7 +73,7 @@
 <!-- Jira -->
 
 ### <img width="5%" title="Jira" src="images/logo/jira.png"> Интеграция с Jira
-##### Настроив через Allure TestOps интеграцию с Jira, в тикет можно передать результат прохождение тестов и список тест-кейсов из Allure
+##### Настроив через Allure TestOps интеграцию с Jira, в тикет можно передать результат прохождения тестов и список тест-кейсов из Allure
 
 ![This is an image](images/screenshots/Jira_integrationns.jpg)
 
